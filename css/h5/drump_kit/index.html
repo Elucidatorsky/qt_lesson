@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5打击乐</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 音乐键盘 -->
+    <div class="keys">
+        <div class="key" data-key='65'>
+            <div>A</div>
+            <span class="sound">clap</span>
+        </div>
+        <div class="key" data-key='83'>
+            <div>S</div>
+            <span class="sound">hihat</span>
+        </div>
+        <div class="key" data-key='68'>
+            <div>D</div>
+            <span class="sound">kick</span>
+        </div>
+        <div class="key" data-key='70'>
+            <div>F</div>
+            <span class="sound">openhat</span>
+        </div>
+        <div class="key" data-key='71'>
+            <div>G</div>
+            <span class="sound">boom</span>
+        </div>
+        <div class="key" data-key='72'>
+            <div>H</div>
+            <span class="sound">ride</span>
+        </div>
+        <div class="key"data-key='74'>
+            <div>J</div>
+            <span class="sound">snare</span>
+        </div>
+        <div class="key"data-key='75'>
+            <div>K</div>
+            <span class="sound">tom</span>
+        </div>
+        <div class="key"data-key='76'>
+            <div>L</div>
+            <span class="sound">tink</span>
+        </div>
+    </div>
+    
+    <audio data-key='65' src="sounds/clap.wav" ></audio> <!--在foreach或者each循环中给按钮赋予值 html中：data-key="@config.key"-->
+    <audio data-key='83' src="sounds/hihat.wav" ></audio>
+    <audio data-key='68' src="sounds/kick.wav" ></audio>
+    <audio data-key='70' src="sounds/openhat.wav" ></audio>
+    <audio data-key='71' src="sounds/boom.wav" ></audio>
+    <audio data-key='72' src="sounds/ride.wav" ></audio>
+    <audio data-key='74' src="sounds/snare.wav" ></audio>
+    <audio data-key='75' src="sounds/tom.wav" ></audio>
+    <audio data-key='76' src="sounds/tink.wav" ></audio>
+
+    <script>
+        const keys = document.querySelectorAll('.key');
+
+        for(let i = 0; i < keys.length; i++){//let 声明的变量只在 let 命令所在的代码块内有效
+            keys[i].addEventListener('click',function(){
+                let inn = this.lastElementChild.innerHTML;
+                this.classList.add('playing');//?两个class?渐变？
+                let t = document.querySelector('audio[src="sounds/' + inn + '.wav"]');//querySelector() 方法返回文档中匹配指定 CSS 选择器的一个元素
+                t.current= 0;//currentTime 属性设置或返回视频播放的当前位置（以秒计）。当设置该属性时，播放会跳跃到指定的位置。
+                t.play();//带有播放和暂停按钮的一段视频 http://www.w3school.com.cn/tiy/t.asp?f=html5_av_met_play_pause
+            });
+        //     keys[i].onmouseup = function(){
+        //         this.classList.remove('playing')Time 
+        //     }
+        }
+
+        const keys_arr = Array.from(keys)//const 声明一个只读的常量，一旦声明，常量的值就不能改变。
+        //Array.from()方法就是将一个类数组对象或者可遍历对象转换成一个真正的数组
+        keys_arr.forEach((item)=>{
+            item.addEventListener('webkitTransitionEnd',(event)=>{
+                event.target.classList.remove('playing');//target 事件属性可返回事件的目标节点（触发该事件的节点），如生成事件的元素、文档或窗口
+            })//all?包括打开和关闭？
+        })
+
+        window.addEventListener('keydown',(event)=>{//定义方法？//当按钮被按下时，发生 keydown 事件
+            let t = document.querySelector('audio[data-key="' + event.keyCode + '"]');
+            let key_d = document.querySelector('.key[data-key="' + event.keyCode + '"]');
+            if(key_d)
+                key_d.classList.add('playing');
+            if(t){
+                t.currentTime = 0;
+                t.play();
+            }
+        }
+        )
+    </script>
+</body>
+</html>
