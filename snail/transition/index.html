@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul li{
+            width: 50px;
+            height: 50px;
+            font-size: 14px;
+            text-align: center;
+            list-style: none;
+            flex: 0 0 100px;
+        }
+        .flex-item{
+            /* height: 300px; */
+            display: flex;
+            align-content: flex-start;
+            /* flex-direction: column; */
+            font-size: 0;
+            flex-wrap: wrap;
+        }
+        .item:first-child{
+            background-color: red;
+        }
+        .item:nth-child(2){
+            background-color:yellow;
+        }
+        .item:nth-child(3){
+            background-color:blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="flex">
+        <ul class="flex-item">
+            <li class="item">1</li>
+            <li class="item">2</li>
+            <li class="item">3</li>
+            <li class="item">4</li>
+            <li class="item">5</li>
+            <li class="item">6</li>
+        </ul>
+    </div>
+</body>
+</html>
