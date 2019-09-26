@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FullPage</title>
+    <!-- <script src="./fullpage.min.js"></script>
+    <link rel="stylesheet" href="./css/fullpage.min.css"> -->
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            /* z-index: 999; */
+        }
+        .scrollContainer {
+            display: none;
+            transition: all ease 1s;
+        }
+        .slide1{
+            background-color: red;
+        }
+        .slide2{
+            background-color: green;
+        }
+        .slide3{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="fullpage">
+        占一页 
+        <div class="section"></div>
+        <div class="section"></div>
+        <div class="section"></div>
+        <div class="section"></div>
+    </div> -->
+    <div class="container">
+        <div class="scrollContainer">
+            <div class="slide slide1"></div>
+            <div class="slide slide2"></div>
+            <div class="slide slide3"></div>
+        </div>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <script>
+        // 为页面做准备 ， 页面高度 display：none
+        // 什么都不显示, 做好后 .show
+        // - jquery 页面加载完成事件
+        // $()  $(func); dom ready事件的监听 DOMContentLoaded html css OK
+        // jQuery API真的很好，简化，兼容性很好
+        $(function() {
+            // console.log('DOM ready');
+            // var $container = document.querySelector('.container'); //？？？
+            var $container = $('.container');
+            // console.log($container);
+            var $scroll = $container.find('.scrollContainer');
+            // var height = $scroll.height();
+            // container height -> scroll
+            // scroll 显示出来
+            var height = $container.height();
+            // console.log(height);
+            var len = 3;
+            var current = 1;
+            // 所有的子页面
+            $container.find('.slide').css('height', height + "px");
+            $scroll.show();
+
+            // JSON 面向对象
+            var page = {
+                isScrolling: false, //开关变量
+                start: 0,
+                prev: function() {
+                    if((current - 1) > 0) {
+                        current--;
+                        page.move(current);
+                    }
+                },
+                next: function() {
+                    // 还可以下滑
+                    if ((current + 1) <= len) {
+                        current++;
+                        page.move(current);
+                    }
+                },
+                move: function(index) {
+                    page.isScrolling = true;
+                    var di = - (index -1)* height + 'px';
+                    $scroll.css('transform', 'translateY(' +di + ')');   // scroll被show的元素
+                },
+                moveEnd: function(){
+                    page.isScrolling = false
+                }
+            }
+
+            var mouseWheelHandle = function(event) {
+                // 向上，还是向下？
+                if (page.isScrolling) return; // 若空 则不动
+                var deltaY = event.originalEvent.deltaY;
+                console.log(deltaY);
+                if (deltaY > 0) {
+                    page.next();
+                } else if (deltaY < 0) {
+                    page.prev();
+                }
+            }
+
+            var keyboarHandle = function(event) {
+                if (page.isScrolling) return; // 若空 则不动
+                var key = event.keyCode || event.which;
+                switch (key) {
+                    case 37:
+                        page.prev();
+                        break;
+                    case 38:
+                        page.prev();
+                        break;
+                    case 39:
+                        page.next();
+                        break;
+                    case 40:
+                        page.next();
+                        break;
+                }
+            }
+
+            $scroll.on('webkitTransitionEnd', page.moveEnd);
+            $scroll.on('TransitionEnd', page.moveEnd);
+            $(document).on('mousewheel', mouseWheelHandle);
+            $(document).on('keydown', keyboarHandle);
+        });
+
+        
+        // window.onload = function() {
+        //     console.log('整个页面加载完成了');
+        // }
+
+
+        // new fullpage('#fullpage', {});
+
+    </script>
+</body>
+</html>

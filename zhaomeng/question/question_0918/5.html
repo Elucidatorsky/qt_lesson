@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>5</title>
+</head>
+<body>
+    <script>
+        // 1 普通调用
+        function foo() {
+            console.log(this);//指向window
+        }
+        //2 在一个对象上被调用
+        var status = 'global';
+        var obj = {
+            status: 'obj',
+            getStatus: function () {
+                return this.status;
+            }
+        }
+        console.log(obj.getStatus()); // 此情况下 this指向 obj
+        var fun = obj.getStatus; // 只是获取值 没有运行 
+        console.log(fun());    // 指向 window 事通过fun调用 调用的时候才能决定this指向哪里
+        console.log('');
+
+        // 3 通过 call apply bind 调用
+        // bind 返回 一个 绑定了this的函数
+        function bar() {
+            console.log(this.name);
+        }
+        var obj3 = {
+            name: 'obj3'
+        }
+        var callbar = bar.call(obj3); // 指定this的时候调用了
+        var bindbar = bar.bind(obj3); // 绑定好this的方法返回了 //拿到一个方法 全局调用 ↑ console.log(fun()) 但已经绑定
+        bindbar();
+        console.log(typeof callbar); 
+        console.log(typeof bindbar); // function
+        // var applybar = bar.apply(obj3);
+        console.log('');
+
+        // 4 new 
+        function Test() {
+            this.name = 'name';
+            // this 指向 test
+            // 往 test 上面添加一个 name 属性
+        }
+        var test = new Test();
+        test = {name: 'age'}
+        // Test 里面 this 指向 test
+
+        // 优先级：new > bind > obj.getStatus() > getStatus()
+
+        var bindObj = {
+            name: '123'
+        }
+        function TestNew() {
+            // new 后不成立了 只使用new的规则 优先级高
+            // bindObj === this
+            // bindObj.age = 20;
+            this.age = 20;
+        }
+        // this === bindObj
+        const BindTestNew = TestNew.bind(bindObj);
+        // BindTestNew();
+        // new BindTestNew();
+        let resNew = new BindTestNew();
+        console.log(bindObj, resNew);
+    </script>
+</body>
+</html>

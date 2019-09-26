@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>mvvm</title>
+</head>
+<body>
+    <!-- Model V 视图 VM 数据模型 -->
+    <!-- View -->
+    <span id="container">1</span>
+    <button id="button">点击加1</button>
+    <script>
+        // MVVM 前端你的设计模式  MVC
+        // Vue component
+        let obj = {value:1} // Model  模型  value:1 可以不要 会自动生成
+        // 会通过ajax 从服务器端拿到
+        // 数据可以变 get set value +-
+        // Vue data() {}    {{}}
+        /*document.getElementById('button').addEventListener("click", function() {
+               obj.value++;
+               document.getElementById('container').innerHTML = obj.value;
+        })*/ //MVC
+        var value = 1;
+        // vue 早期使用数据的单项事件流的使用方案 数据绑定响应式编程的实现
+        // 视图模型层
+        Object.defineProperty(obj, "value", { //  相当于写java的默认的get,set方法
+            get: function() {
+                console.log('读属性');
+                console.log('get: value',value);
+                return value; //return去value++
+            },
+            set: function(newValue) {
+                console.log('设置属性');
+                value = newValue;
+                console.log('set: value',value);
+                document.getElementById('container').innerHTML = newValue;
+            }
+        });
+        document.getElementById('button').addEventListener("click", function() {
+            console.log('事件');
+            obj.value++;
+            console.log('value已执行');
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Object</title>
+</head>
+<body>
+    <script>
+        // 人
+        var obj = new Object();
+        obj.name = '李雷';
+        obj.age = 18;    
+
+        function createPerson(name,age) {
+            var t= new Object();
+            t.name = name;
+            t.age = age;
+            return t;
+        }
+
+        function Person(naem,age,hobby) {
+            this.name = name;
+            this.age = age;
+            this. hobby = hobby;
+            this.say = function () {
+                console.log('hobby', this.hobby)
+            }
+        }
+        // new 创建一个实例
+        var p1 = new Person('李雷','20',[]);
+        p1.say();
+        console.log(p1);
+        //
+        function Foo() {
+            this.a =1;
+
+        }
+    </script>
+</body>
+</html>

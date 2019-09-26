@@ -64,7 +64,8 @@
         for(let i = 0; i < keys.length; i++){//let 声明的变量只在 let 命令所在的代码块内有效
             keys[i].addEventListener('click',function(){
                 let inn = this.lastElementChild.innerHTML;
-                this.classList.add('playing');//?两个class?渐变？
+                console.log('this', this.innerHTML);
+                this.classList.add('playing');//渐变
                 let t = document.querySelector('audio[src="sounds/' + inn + '.wav"]');//querySelector() 方法返回文档中匹配指定 CSS 选择器的一个元素
                 t.current= 0;//currentTime 属性设置或返回视频播放的当前位置（以秒计）。当设置该属性时，播放会跳跃到指定的位置。
                 t.play();//带有播放和暂停按钮的一段视频 http://www.w3school.com.cn/tiy/t.asp?f=html5_av_met_play_pause
@@ -77,12 +78,13 @@
         const keys_arr = Array.from(keys)//const 声明一个只读的常量，一旦声明，常量的值就不能改变。
         //Array.from()方法就是将一个类数组对象或者可遍历对象转换成一个真正的数组
         keys_arr.forEach((item)=>{
+            //当CSS 3的animation动画执行结束时，触发webkitAnimationEnd事件,当CSS 3的transition动画执行结束时，触发webkitTransitionEnd事件
             item.addEventListener('webkitTransitionEnd',(event)=>{
                 event.target.classList.remove('playing');//target 事件属性可返回事件的目标节点（触发该事件的节点），如生成事件的元素、文档或窗口
-            })//all?包括打开和关闭？
+            })
         })
 
-        window.addEventListener('keydown',(event)=>{//定义方法？//当按钮被按下时，发生 keydown 事件
+        window.addEventListener('keydown',(event)=>{//当按钮被按下时，发生 keydown 事件
             let t = document.querySelector('audio[data-key="' + event.keyCode + '"]');
             let key_d = document.querySelector('.key[data-key="' + event.keyCode + '"]');
             if(key_d)

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <!-- <box id="box"></box> -->
+    <div id="box"></div>
+    <div id="box1"></div>
+    <script>
+        var box = document.getElementById('box');
+        var box1 = document.getElementById('box1');
+        var es5Map = {
+            b: 1, a: 2, '1': 1, [box]: 'box', [box1]: 'box1', b: 2
+        }
+        // key 相同会覆盖 []转化为字符串则 undefind 会覆盖
+        console.log(es5Map[box] === 'box');
+        Object.keys(es5Map).forEach(key => {
+            console.log(es5Map[key]);
+        })
+        // var key = 'key'
+        // es5Map[key] = 123;
+        var es6Map = new Map();
+        es6Map.set('b', 1);
+        es6Map.set('a', 2);
+        es6Map.set(box,'123456');
+        console.log(Object.keys(es5Map));
+        for (let k of es6Map.keys()){
+            console.log(k);
+        }
+    </script>
+</body>
+</html>

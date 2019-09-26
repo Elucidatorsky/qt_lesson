@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <img src="" id="imagePreview" alt="">
+    <input type="file" id="imageSelector" accept=".png,.jpg,.jpeg,.gif">
+    <script>
+        const oFile = document.getElementById('imageSelector')
+        const imagePreview = document.getElementById('imagePreview')
+        oFile.addEventListener('change',e=>{
+            file = e.target.files[0]
+            console.log(e.target.files[0]);
+            console.log(file instanceof Blob);
+            const url = URL.createObjectURL(file)
+            console.log(url);
+            imagePreview.src = url
+            
+        })
+    </script>
+</body>
+</html>

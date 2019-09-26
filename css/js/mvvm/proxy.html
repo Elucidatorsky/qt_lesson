@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Proxy MVVM</title>
+</head>
+<body>
+    <span id="container">1</span>
+    <button id="button">点击+1</button>
+    <button id="numBtn">num+1</button>
+    <script>
+        (function() {
+            // let watch = {} => function
+            function watch(target, func) {
+                console.log('watck: target', target);
+                let proxy = new Proxy(target, {
+                    get: function(target, prop) {
+                        console.log('get: prop', prop);
+                        console.log('get: target[prop]',target[prop]);
+                        return target[prop];
+                    },
+                    set: function(target, prop, value){
+                        target[prop] = value;
+                        console.log('get: prop', prop);
+                        console.log('get: target[prop] （被value赋值）',value);
+                        func(prop, value);
+                    }
+                });  //不会污染全局空间
+                return proxy;
+            }
+            this.watch = watch  // this 即 window 即可在外访问
+        })()
+        let obj = {
+            value: 1,
+            num: 0
+        }
+        const newObj = watch(obj, function(key, newValue) {
+            if(key === 'value'){
+                console.log('newObj: key===\'value\'', key);
+                document.getElementById('container').innerHTML = newValue
+            } else if (key === 'num') {
+                document.getElementById('container').innerHTML = newValue;
+            }  // MVVM可以定义多个变量
+        });
+        document.getElementById('button').addEventListener('click', function() {
+            console.log('button: newObj',newObj);
+            newObj.value++;
+            console.log('button: value++完成');
+        })
+        document.getElementById('numBtn').addEventListener('click', function() {
+            newObj.num+=2;
+        })
+    </script>
+</body>
+</html>

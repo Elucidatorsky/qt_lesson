@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test</title>
+</head>
+
+<body>
+    <form action="/login" method="POST" name="loginForm">
+        <!-- 词汇量 -->
+        <div>
+            <label for="emailInput">Email Address</label>
+            <!-- required 请输入此字段悬停 -->
+            <input type="email" placeholder="请输入邮箱" required reg="^[0-9a-zA-Z_-]+@[0-9a-zA-Z_-]+(\.[0-9a-zA-Z_-]+)+$">
+        </div>
+        <div>
+            <label for="passwordInput">Password</label>
+            <input type="password" name="passwordInput" placeholder="亲输入密码" required minlength="6" maxlength="12">
+        </div>
+        <div class="form-group">
+            <label for="fileInput">File input</label>
+            <input type="file" id="fileInput">
+            <p class="help-block">
+                Example block-level help text here
+            </p>
+        </div>
+        <div class="checkbox">
+            <label class="" for="">
+                <input type="checkbox">Check me out
+            </label>
+        </div>
+        <button class="btn btn-default">Submit</button>
+    </form>
+</body>
+
+</html>

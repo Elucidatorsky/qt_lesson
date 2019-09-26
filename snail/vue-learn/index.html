@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <title>vue</title>
+    <style>
+        .good{
+            color: yellow;
+        }
+        .active{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        {{message}}
+        <!-- v-bind: / : (缩写) 绑定属性 v-on: / @ (缩写) 绑定事件 -->
+        <p class="cool" v-bind:class="isGood ? 'good' : ''" @click="goodAnimation">{{mag}}</p>
+        <p class="cool" :class="[activeClass]">天使的心跳</p>
+        <ul>
+            <li v-for="todo in todos">{{todo.text}}</li>
+        </ul>
+        <!-- 双向数据绑定 -->
+        <input type="text" v-model="content">
+        <p>{{content}}</p>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello',
+                isGood: false,
+                activeClass:'active',
+                todos:[
+                    {text: 'hello html'},
+                    {text1: 'hello js'},
+                    {text: 'hello vue'}
+                ],
+                content: '',
+                mag: '凹凸世界'
+            },
+            methods: {
+                goodAnimation() {
+                    // 此this指向vue的实例 取数据时vue可以忽略this.data.isGood
+                    this.isGood = !this.isGood
+                    this.msg = this.msg.split('').reverse().join('')
+                }
+            }
+        })
+    </script>
+</body>
+</html>

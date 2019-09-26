@@ -16,8 +16,8 @@
     var game = new Phaser.Game(800, 600,
      Phaser.CANVAS,
      'game', {
-         preload: preload,
-         create: create
+         preload: preload, // 加载资源 方法
+         create: create // 初始化场景
      })
 
     function preload() {
@@ -30,11 +30,11 @@
             .backgroundColor = '#124184';
         // add block
         game.physics.startSystem(Phaser.Physics.BOX2D)
-        game.physics.box2d.setBoundsToWorld();
+        game.physics.box2d.setBoundsToWorld(); //界限
         game.physics.box2d.gravity.y = 500;
         
         for (var i = 0; i < 6; i++) {
-            var blockSprite = game.add.sprite(150 + i*125, 300 - i * 50, 'block');
+            var blockSprite = game.add.sprite(150 + i*125, 300 - i * 50, 'block'); // sprite 精灵
             game.physics.box2d.enable(blockSprite);
             blockSprite.body.angle=30;
         }

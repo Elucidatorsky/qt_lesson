@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HistoryRouter</title>
+</head>
+<body>
+    <!-- SPA不变的部分 -->
+    <div id="nav">
+        <a href="/page1">page1</a>
+        <a href="/page2">page2</a>
+        <a href="/page3">page3</a>
+        <a href="/page4">page4</a>
+        <a href="/page5">page5</a>
+    </div>
+    <!-- 动态的部分 -->
+    <div id="container"></div>
+    <script>
+        class HistoryRouter {
+            constructor () {
+                this.routers = {};
+                this.listenLink();
+            }
+            register(path, callback = function(){}) {
+                this.routers[path] = callback;
+            }
+            listenLink() {
+                // click 监听window
+                window.addEventListener('click', (e) => {
+                    // console.log('click');
+                    let dom = e.target;
+                    if (dom.tagName.toUpperCase() === 'A' && dom.getAttribute('href')) {
+                        e.preventDefault();
+                        console.log(dom.getAttribute('href'))
+                        // history api
+                        this.assign(dom.getAttribute('href'));
+                    }
+                }, false)
+            }
+            assign (path) {
+                // 添加一个新的状态 url代表router发生了改变
+                history.pushState({path}, null, path);
+                this.delPathHandler(path);
+            }
+            delPathHandler (path) {
+                let handler = this.routers[path];
+                handler.apply(this); // 指向路由对象
+            }
+        }
+        let router = new HistoryRouter();
+        // 注册
+        let container = document.getElementById('container');
+        router.register('/page1', () => { container.innerHTML = '这是page1'})
+        router.register('/page2', () => { container.innerHTML = '这是page2'})
+    </script>
+</body>
+</html>

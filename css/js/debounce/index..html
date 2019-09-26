@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Debounce</title>
+</head>
+<body>
+    <div>
+        <label for="unDebounce">没有防抖的input</label>
+        <input type="text" id="unDebounce">
+    </div>
+    <div>
+        <label for="debounce">防抖的input</label>
+        <input type="text" id="debounce">
+    </div>
+    <script>
+        // let id = null; 全局污染  31 32 26 37 46 53 54
+        let inputA = document.getElementById('unDebounce');
+        let inputDebounce = document.getElementById('debounce');
+        let debounceAjax = debounce(ajax, 1000);
+        inputDebounce.addEventListener('keyup', function(e){
+            // 防抖的函数
+            // 最后执行的是ajax   return Ajax() return一个函数，即高阶函数
+            console.log('inputDebounce');
+            debounceAjax(e.target.value);
+        })
+        // 通用功能 func == ajax
+        function debounce(func, delay) {
+            console.log('debounce');
+            console.log('func',func);
+            // 高阶函数 参数是参数 或者返回的是函数
+            // 闭包 
+            // func ajax 未来被执行，可以被引用到 ↓
+            return function (args) {// 此函数 = debounceAjax
+                console.log('return args',args);
+                // args = e.target.value
+                // 此处引用到 func
+                // delay上场
+                // var that = this
+                clearTimeout(func.id);// 将id作为函数属性
+                // 将setTimeout的执行与func绑定，不会消失 内部定义变量会销毁
+                func.id = setTimeout( () => {
+                    // 引用到debounce 内部
+                    console.log(func);
+                    func.call(this, args);
+                }, delay);
+                // func(args);
+            }
+        }
+        function ajax(content) {
+            console.log('ajax');
+            console.log(content);
+        }
+        // 实现 search suggestion 的一种方式
+        // 带来大量的事件执行
+        inputA.addEventListener('keyup', function(e){
+            let value = e.target.value;
+            ajax(value);
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+body, div, dl, dt, dd, ul, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, blockquote {
+    margin: 0;
+    padding: 0;
+}
+ul, ol {
+    list-style: none;
+}
+html{
+    color: #111111;
+    background-color: white;
+}
+body{
+    padding-top: 30px;
+}
+body, td, th{
+    font: 12px Helvetica, Arial, sans-serif;
+    line-height: 1.62;
+}
+input {
+    margin-right: 3px;
+    vertical-align: middle;
+    outline: none;
+}
+#anony-nav {
+    width: 950px;
+    margin: 0 auto 25px;
+}
+#anony-nav .anony-nav-links {
+    float: right;
+    margin-top: 6px;
+}
+#anony-nav .anony-nav-links li {
+    display: inline-block;
+    /* 对ie打补丁 */
+    *display: inline;
+    zoom: 1;
+    margin: 0 0 0 17px;
+}
+#anony-nav .anony-nav-links li a {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    width: 40px;
+    height: 20px;
+    overflow: hidden;
+    margin: 0;
+    line-height: 20em;
+    outline: none;
+    vertical-align: middle;
+    background: transparent url(https://img3.doubanio.com/f/sns/8536084688879cb1137e8efdff30e59614ff2f86/pics/sns/anony_home/anony_nav_logo.png) no-repeat 100% 100%;
+    /* background-image: -webkit-image-set(url(https://img3.doubanio.com/f/sns/8536084688879cb1137e8efdff30e59614ff2f86/pics/sns/anony_home/anony_nav_logo.png) 1x, url(/f/sns/82c3a65…/pics/sns/anony_home/anony_nav_logo@2x.png) 2x); */
+}
+#anony-nav .anony-nav-links li .link-book {
+    background-position: 0 0;
+}
+#anony-nav .anony-nav-links li .link-movie {
+    background-position: -60px 0;
+}
+#anony-nav .anony-nav-links li .link-music {
+    background-position: -120px 0;
+}
+#anony-nav .anony-nav-links li .link-group {
+    background-position: -180px 0;
+}
+#anony-nav .anony-nav-links li .link-events {
+    background-position: -240px 0;
+}
+#anony-nav .anony-nav-links li .link-fm {
+    background-position: -300px 0;
+}
+#anony-nav .anony-nav-links li .link-shijian {
+    background-position: -360px 0;
+}
+#anony-nav .anony-nav-links li .link-market {
+    background-position: -420px 0;
+}
+#anony-nav h1 {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    vertical-align: middle;
+    width: 160px;
+    height: 34px;
+    margin: 0 20px 0 0;
+    padding: 0;
+    font-size: 12px;
+    font-weight: normal;
+    background: url(https://img3.doubanio.com/f/sns/19886d443852bee48de2ed91f4a3bdfdaf8c809c/pics/nav/logo_db.png) no-repeat 0 0;
+    overflow: hidden;
+}
+#anony-nav h1 a {
+    display: block;
+    height: 34px;
+    line-height: 10em;
+}
+#anony-nav .anony-srh {
+    position: relative;
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    vertical-align: middle;
+    width: 270px;
+    height: 30px;
+    border: 1px solid #c3c3c3;
+}
+#anony-nav .anony-srh .inp {
+    display: block;
+    height: 30px;
+    overflow: hidden;
+}
+#anony-nav .anony-srh .inp input {
+    width: 240px;
+    border: none;
+    font-size: 13px;
+    height: 20px;
+    padding: 5px;
+}
+#anony-nav .anony-srh .bn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    cursor: pointer;
+    background: url(https://img3.doubanio.com/f/sns/f71f15922ebd7c0ff0ea0e7a25577529efd8981a/pics/icon/bn_srh_1.png) 50% 50% no-repeat;
+}
+#anony-nav .anony-srh .bn input {
+    border: none;
+    background: transparent;
+    *padding-left: 30px;
+    overflow: hidden;
+    width: 30px;
+    height: 30px;
+    font-size: 0;
+    color: transparent;
+    cursor: pointer;
+}
+form{
+    margin: 0;
+    padding: 0;
+    border: none;
+}
