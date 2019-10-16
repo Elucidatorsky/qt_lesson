@@ -6,6 +6,7 @@ Vue.use(Router)
 
 // <script src="main.js"/>
 // 懒加载
+
 export default new Router({
   routes: [
     {
