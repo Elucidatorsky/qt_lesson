@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>回调</title>
+</head>
+<body>
+    <script>
+        // function readFile(path, cb) {}   
+        //     readFile('./jq.js', (data) => {
+        //     // 要求：3s后 输出 data === '文件不存在'
+        //     console.log(data);
+        // }) 
+        function readFile(path, cb) {
+            // setTimeout(() => {
+            //     cb('文件不存在');
+            // },3000)
+            console.log('readFile')
+            console.log(path)
+            console.log(cb)
+            cb('文件不存在');
+        }   
+        readFile('./jq.js', (data) => {
+            // 要求：3s后 输出 data === '文件不存在'
+            console.log(data);
+        }) 
+    </script>
+</body>
+</html>
