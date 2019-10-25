@@ -8,10 +8,8 @@ import { Swipe, SwipeItem, Icon, Field, ActionSheet, Toast, Panel, Uploader } fr
 import 'vant/lib/index.css'
 import axios from 'axios'
 
-Vue.use(Swipe).use(SwipeItem).use(Icon).use(Field).use(ActionSheet).use(Toast).use(Panel).use(Uploader).use(axios)
-
-Vue.prototype.$http = axios
-
+Vue.use(Swipe).use(SwipeItem).use(Icon).use(Field).use(ActionSheet).use(Toast).use(Panel).use(Uploader)
+Vue.prototype.$http = axios;
 Vue.config.productionTip = false
 
 router.beforeEach((to, from, next) => {
