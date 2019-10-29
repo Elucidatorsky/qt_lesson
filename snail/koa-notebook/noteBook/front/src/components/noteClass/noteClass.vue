@@ -16,7 +16,7 @@
           v-for="(item, index) in noteClassList"
           :key="index"
           :style="`background-image:url(${item.img})`"
-          @click="noteList(item.title)"
+          @click="nodeList(item.title)"
         >
           <div class="mask"></div>
           <span class="title">{{item.title}}</span>
@@ -93,23 +93,25 @@ export default {
           img: require("./../../assets/img/raw_1512446251.jpeg"),
           title: "科技"
         }
-      ],
+      ]
+    };
+  },
+  methods: {
+    menu() {
+      this.isClickMenu_note = true;
+      this.isClickMenu_info = true;
+    },
+    arrow() {
+      this.isClickMenu_note = false;
+      this.isClickMenu_info = false;
+    },
+    nodeList(title) {
+      // console.log('123');
       
+      this.$router.push({path: '/noteList', query:{'title':title}})
+      // this.$router.push({path:'/noteClass'});
     }
   },
-  methods:{
-          menu() {
-              this.isClickMenu_note = true
-              this.isClickMenu_info = true
-          },
-          arrow() {
-              this.isClickMenu_note = false
-              this.isClickMenu_info = false
-          },
-          noteList(title) {
-              this.$router.push({path: '/noteList',query:{'title':title}})
-          }
-      }
 };
 </script>
 

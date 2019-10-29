@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let a = 0;
+        async function test() {
+            // await 转化为 Promise 把后面代码放到then里面去,Promise 要then才执行
+            let b = await 10;
+            a = a + b;
+            console.log(a);
+        }    
+        test();
+        a ++;
+        console.log(a);
+    </script>
+</body>
+</html>

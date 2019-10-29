@@ -7,12 +7,16 @@ import 'amfe-flexible'
 import { Swipe, SwipeItem, Icon, Field, ActionSheet, Toast, Panel, Uploader } from 'vant'
 import 'vant/lib/index.css'
 import axios from 'axios'
+import util from './assets/js/util'
 
 Vue.use(Swipe).use(SwipeItem).use(Icon).use(Field).use(ActionSheet).use(Toast).use(Panel).use(Uploader)
-Vue.prototype.$http = axios;
+
+Vue.prototype.$http = axios
+Vue.prototype.$util = util
+
 Vue.config.productionTip = false
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, from, next) => { // 路由守卫
   document.title = to.meta.title
   next()
 })

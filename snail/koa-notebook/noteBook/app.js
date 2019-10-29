@@ -21,8 +21,9 @@ app.use(cors({
   maxAge: 5,
   credentials: true,
   allowMethods: ['GET', 'POST', 'DELETE'],
-  allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
+  allowHeaders: ['Content-Type', 'Authorization', 'Accept']
 }))
+
 // middlewares
 app.use(bodyparser({
   enableTypes:['json', 'form', 'text']

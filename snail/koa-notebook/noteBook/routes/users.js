@@ -11,19 +11,19 @@ router.get('/bar', function (ctx, next) {
   ctx.body = 'this is a users/bar response'
 })
 
-router.get('/all', async(ctx, next) => {
+router.get('/all', async (ctx, next) => {
   await userService.getAllUsers()
-  .then((res) => {
-    console.log('打印结果' + JSON.stringify(res))
-    ctx.body = res
-  })
+    .then((res) => {
+      console.log('打印结果' + JSON.stringify(res))
+      ctx.body = res
+    })
 })
 // 注册
-router.post('/userRegister', async(ctx, next) => {
+router.post('/userRegister', async (ctx, next) => {
   var _username = ctx.request.body.username
   var _userpwd = ctx.request.body.userpwd
   var _nickname = ctx.request.body.nickname
-  if (!_username || !_userpwd || !_nickname) { // && ?
+  if (!_username && !_userpwd && !_nickname) {
     ctx.body = {
       code: '800001',
       mess: "用户名昵称密码不能为空"
@@ -71,9 +71,9 @@ router.post('/userRegister', async(ctx, next) => {
   })
 })
 
-// 登录 post 加密传输 get http协议
+
 // 登陆
-router.post('/userLogin', async(ctx, next) => {
+router.post('/userLogin', async (ctx, next) => {
   var _username = ctx.request.body.username
   var _userpwd = ctx.request.body.userpwd
 
@@ -97,7 +97,7 @@ router.post('/userLogin', async(ctx, next) => {
         ctx.body = {
           code: '800004',
           data: r,
-          mess: '账号活密码错误'
+          mess: '账号或密码错误'
         }
       }
     }).catch((err) => {
@@ -106,6 +106,69 @@ router.post('/userLogin', async(ctx, next) => {
         data: err
       }
     })
+})
+
+// 根据分类名称查找对应的数据列表
+router.post('/findNoteListByType', async (ctx, next) => {
+  let note_type = ctx.request.body.note_type
+  await userService.findNoteListByType(note_type)
+    .then(async (res) => {
+      let r = ''
+      if (res.length) {
+        r = 'OK'
+        ctx.body = {
+          code: 800000,
+          data: res,
+          mess: '查找成功'
+        }
+      } else {
+        r = 'error',
+          ctx.body = {
+            code: 800004,
+            data: r,
+            mess: '查找失败'
+          }
+      }
+    }).catch(err => {
+      ctx.body = {
+        code: 800002,
+        data: err
+      }
+    })
+})
+
+// 根据笔记的ID查询笔记详情
+router.post('/findNoteDetailByID', async (ctx, next) => {
+  let id = ctx.request.body.id;
+  await userService.findNoteDetailByID(id)
+    .then(async(res) => {
+      let r = ''
+      if (res.length) {
+        r = 'OK'
+        ctx.body = {
+          code: '800000',
+          data: res[0],
+          mess: '查找成功'
+        }
+      } else {
+        r = 'error'
+        ctx.body = {
+          code: '800004',
+          data: r,
+          mess: '查找失败'
+        }
+      }
+    }).catch((err) => {
+      ctx.body = {
+        code: '800002',
+        data: err
+      }
+    })
+})
+
+// 插入数据
+router.post('/insertNote', async (ctx,next) => {
+  
 })
 
 
