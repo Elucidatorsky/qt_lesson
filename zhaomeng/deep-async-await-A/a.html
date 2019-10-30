@@ -11,9 +11,11 @@
         let a = 0;
         async function test() {
             // await 转化为 Promise 把后面代码放到then里面去,Promise 要then才执行
-            let b = await 10;
-            a = a + b;
-            console.log(a);
+            // let b = await 10;
+            // a = a + b;
+            let c = a + await 10;
+            console.log('c',c);
+            // console.log(a);
         }    
         test();
         a ++;
