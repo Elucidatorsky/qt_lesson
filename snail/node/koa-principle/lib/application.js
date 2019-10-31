@@ -1,5 +1,6 @@
 let http = require('http')
 let EventEmitter = require('events')
+let Stream = require('stream')
 
 let context = require('./context')
 let request = require('./request')
@@ -8,7 +9,8 @@ let response = require('./response')
 class myKoa extends EventEmitter{
     constructor(){
         super()
-        this.fn
+        this.middlewares = []
+        this.fn // 回调函数
         this.context = context
         this.request = request
         this.response = response
@@ -28,12 +30,52 @@ class myKoa extends EventEmitter{
         response.request = request
         return ctx
     }
+
+    handleRequest(req, res) { // 处理请求
+        res.statusCode = 404 // 默认
+
+        let ctx = this.createContext(req, res)
+        let fn = this.compose(this.middlewares, ctx)
+        fn.then(() => {
+            if(typeof ctx.body == 'object'){ // 判断ctx.body是否为一个对象 或一个 json对象
+                res.setHeader('Content-Type', 'applicatioln/json;charset=utf8')
+                res.end(JSON.stringify(ctx.body))
+            } else if (ctx.body instanceof Stream) {
+                ctx.body(res)
+            } else if (typeof ctx.body == 'string' || Buffer.isBuffer(ctx.body)){
+                res.setHeader('Content-Type', 'text/html;charset=utf8')
+                res.end(ctx.body)
+            } else {
+                res.end('Not Found');
+            }
+        }).catch((err) => {
+            this.emit('error', err)
+            res.statusCode = 500
+            res.end('server error')
+        })
+        // this.fn(ctx) // 调用用户给的回调 把ctx还给用户使用
+
+        // res.end(ctx.body) // ctx.body 用来输出到页面
+    }
+
     use(fn) {
-        this.fn = fn 
+        // this.fn = fn // 保存单个回调函数
+        this.middlewares.push(fn) // 存入 保存多个回调函数
+    }
+
+    compose (middlewares, ctx) {
+        function dispatch(index) {
+            if(index === middlewares.length) return
+            let middleware = middlewares[index]
+            // middlewares(ctx, () => dispatch(index + 1))
+            return Promise.resolve(middleware(ctx, () => dispatch(index + 1))) // 目的 app.use 里面可以使用 .then()
+        }
+        return dispatch(0)
     }
 
     listen (...args) {
-        let server = http.createServer(this.fn)
+        // let server = http.createServer(this.fn)
+        let server = http.createServer(this.handleRequest.bind(this)) // 防止丢失handleRequest里的this的作用域
         server.listen(...args)
     }
 }
