@@ -1,7 +1,7 @@
 const router = require('koa-router')()
 const userService = require('../controllers/mySqlConfig')
 
-router.prefix('/users')
+router.prefix('/users') // 给router实例添加前缀
 
 router.get('/', function (ctx, next) {
   ctx.body = 'this is a users response!'

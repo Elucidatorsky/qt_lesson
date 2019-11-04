@@ -12,7 +12,7 @@ import util from './assets/js/util'
 Vue.use(Swipe).use(SwipeItem).use(Icon).use(Field).use(ActionSheet).use(Toast).use(Panel).use(Uploader)
 
 Vue.prototype.$http = axios
-Vue.prototype.$util = util
+Vue.prototype.$util = util  // 导入数据库到前端
 
 Vue.config.productionTip = false
 
