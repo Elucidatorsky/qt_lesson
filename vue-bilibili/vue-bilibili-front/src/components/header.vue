@@ -1,4 +1,5 @@
 <template>
+    <!-- <div class="pic"> -->
     <div class="header-outer">
         <div class="header-center">
             <div class="header-left-ul">
@@ -7,18 +8,23 @@
                     <li class="header-left game"><p>游戏中心</p>
                         <div class="header-left-game-in">
                             <div class="header-game-in-left">
-                                <div class="game-in-gamepic0"></div>
-                                <div class="game-in-gamepic1">
-                                    <img src="" alt="">
-                                    <p></p>
+                                <div class="game-in-gamepic_top">
+                                    <img src="../img/header_game_in0.jpg" alt="">
+                                    <p>重装战姬</p>
                                 </div>
-                                <div class="game-in-gamepic2">
-                                    <img src="" alt="">
-                                    <p></p>
-                                </div>
-                                <div class="game-in-gamepic3">
-                                    <img src="" alt="">
-                                    <p></p>
+                                <div class="game-in-gamepic_bottom">
+                                    <div class="game-in-gamepic one">
+                                        <img src="../img/header_game_in1.png" alt="">
+                                        <p>命运-冠位指定</p>
+                                    </div>
+                                    <div class="game-in-gamepic two">
+                                        <img src="../img/header_game_in1.png" alt="">
+                                        <p>命运-冠位指定</p>
+                                    </div>
+                                    <div class="game-in-gamepic three">
+                                        <img src="../img/header_game_in1.png" alt="">
+                                        <p>命运-冠位指定</p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="header-game-in-right">
@@ -97,61 +103,410 @@
                     </li>
                     <li class="header-left contest"><p>赛事</p></li>
                     <li class="header-left download"><i></i><p>下载App</p>
-                        <div class="header-left-download"></div>
+                        <div class="header-left-downloadin"></div>
                     </li>
                 </ul>
             </div>
             <div class="header-right-ul">
                 <ul>
                     <li class="header-right login">
-
-                    </li>
-                    <li class="header-right member"><p>大会员</p>
-                        <div class="header-right-member-in">
-                            <div class="member-in-goodthing-title"><p>精彩推荐</p></div>
-                            <div class="member-in-goodthing">
-                                <img src="" alt="">
-                                <p></p>
+                        <div class="login-false">
+                            <div class="login-false-logincan-title"><p>登录后你可以</p></div>
+                            <div class="login-false-gif"></div>
+                            <button class="login-false-loginbtn">登录</button>
+                            <div class="login-false-foot">
+                                <p>首次使用？</p>
+                                <a href="">
+                                    <p>点我去注册</p>
+                                </a>
                             </div>
-                            <div class="member-in-getmember"><button></button></div>
+                        </div>
+                        <div class="login-true">
+                            <Headerislogin></Headerislogin>
                         </div>
                     </li>
+                    <li class="header-right member"><p>大会员</p>
+                        <Headermember></Headermember>
+                    </li>
                     <li class="header-right message"><p>消息</p>
-
+                        <ul class="header-right-message-in-ul">
+                            <li class="header-right-message-in-li">
+                                <a href="">
+                                    <p>回复我的</p>
+                                </a>
+                            </li>
+                            <li class="header-right-message-in-li">
+                                <a href="">
+                                    <p>@我的</p>
+                                </a>
+                            </li>
+                            <li class="header-right-message-in-li">
+                                <a href="">
+                                    <p>收到的赞</p>
+                                </a>
+                            </li>
+                            <li class="header-right-message-in-li">
+                                <a href="">
+                                    <p>系统通知</p>
+                                </a>
+                            </li>
+                            <li class="header-right-message-in-li">
+                                <a href="">
+                                    <p>我的消息</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="header-right dynamic"><p>动态</p> <!--  -->
-                    
+                        <Headerdynamic></Headerdynamic>
                     </li>
                     <li class="header-right later"><p>稍后再看</p>
-                    
+                        <Headerlatercollect></Headerlatercollect>
                     </li>
                     <li class="header-right collect"><p>收藏</p>
-                    
+                        <Headerlatercollect></Headerlatercollect>
                     </li>
                     <li class="header-right history"><p>历史</p> <!--  -->
-                    
+                        <Headerhistory></Headerhistory>
                     </li>
                     <li class="header-right create"><p>创作中心</p></li> <!--  -->
                 </ul>
                 <div class="tougao"><p>投稿</p>
-                
+                    <div class="tougao-in">
+                        <div class="tougao-content">
+                            <img src="" alt="">
+                            <p>专栏投</p>
+                        </div>
+                        <div class="tougao-content">
+                            <img src="" alt="">
+                            <p>音频投</p>
+                        </div>
+                        <div class="tougao-content">
+                            <img src="" alt="">
+                            <p>视频投</p>
+                        </div>
+                        <div class="tougao-content">
+                            <img src="" alt="">
+                            <p>投稿管</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    <!-- </div> -->
     </div>
 </template>
 
 <script>
+import Headerislogin from './Headerislogin'
+import Headermember from './Headermember'
+import Headerdynamic from './Headerdynamic'
+import Headerlatercollect from './Headerlatercollect'
+import Headerhistory from './Headerhistory'
 export default {
-    name: 'header',
+    name: 'Header',
     data() {
         return{
 
         }
+    },
+    components: {
+        Headerislogin,
+        Headermember,
+        Headerdynamic,
+        Headerlatercollect,
+        Headerhistory
     }
 }
 </script>
 
-<style>
+<style lang="stylus" scoped>
 
+* 
+    margin 0 auto
+    padding 0
+
+    // .pic
+    //     position absolute;
+    //     top 0
+    //     left 0
+    //     width 100%
+    //     height 170px
+    //     box-sizing border-box
+    //     background url(../img/header.png)
+    //     background-size cover
+    //     background-position center
+    .header-outer::before
+        content: ""
+        position: absolute
+        top: 0
+        left: 0
+        bottom: 0
+        right: 0
+        filter: blur(20px)
+        // margin: -30px
+        background: url(../img/header.png)
+        background-size: cover
+        background-position center
+        z-index -1
+    .header-outer
+        width 100%
+        height 40px
+        position relative
+        // top 0
+        // left 0
+        // overflow hidden
+
+        .header-center
+            width 1080px
+            height 40px
+            text-align center
+
+            .header-left-ul
+                width 520px
+                height 40px
+                float left
+
+                ul
+                    li
+                        height 40px
+                        width auto
+                        margin 0 5px
+                        line-height 40px
+                        white-space nowrap
+                        float left
+                        position relative
+                        list-style none
+                        cursor pointer
+                    .home
+                        
+                    .game
+                        
+                        .header-left-game-in
+                            width 470px
+                            height 255px
+                            position absolute
+                            background-color yellow
+                            display block
+                            z-index 10
+                            .header-game-in-left
+                                width 270px
+                                height 255px
+                                position relative
+                                float left
+                                .game-in-gamepic_top
+                                    width 240px
+                                    height 128px
+                                    margin 15px 
+                                    position relative
+                                    float left
+                                    img
+                                        width 100%
+                                        height 100%
+                                    p
+                                        width auto
+                                        height 20px
+                                        text-align left 
+                                        line-height 20px
+                                        width 100%
+                                        bottom 0
+                                        left 0
+                                        background-color skyblue
+                                        // background-color rgba (255,255,255,0.2)
+                                        position absolute
+                                .game-in-gamepic_bottom
+                                    width 260px
+                                    height 107px
+                                    position relative
+                                    align-items center
+                                    float left
+                                    .game-in-gamepic
+                                        width 60px
+                                        height 100px
+                                        margin 0 0 7px 21px
+                                        position relative
+                                        float left
+                                        img
+                                            width 60px
+                                            height 60px
+                            .header-game-in-right
+                                width 200px
+                                height 255px
+                                background-color blue
+                    .live
+
+                        .header-left-live-in
+                            width 500px
+                            height 250px
+                            position absolute
+                            display block
+                            .header-live-in-left
+                                width 250px
+                                height 250px
+                                float left
+                                .live-in-hotlive-title
+                                    width 255px
+                                    height 25px
+                                    float left
+                                .live-in-person-wrap
+                                    width 255px
+                                    height 225px
+                                    float left
+                                    .live-in-person
+                                        width 64px
+                                        height 93px
+                                        background-color red
+                                        float left
+                                        .one
+                                            img
+                                                border-radius 50%
+                                                background-image url(../img/3.jpg)
+                                                background-size cover
+                                        .two
+                                            img
+                                                border-radius 50%
+                                                background-image url(../img/3.jpg)
+                                                background-size cover
+                                        .three
+                                            img
+                                                border-radius 50%
+                                                background-image url(../img/3.jpg)
+                                                background-size cover
+                                        .four
+                                            img
+                                                border-radius 50%
+                                                background-image url(../img/3.jpg)
+                                                background-size cover
+                                        .five
+                                            img
+                                                border-radius 50%
+                                                background-image url(../img/3.jpg)
+                                                background-size cover
+                                        .six
+                                            img
+                                                border-radius 50%
+                                                background-image url(../img/3.jpg)
+                                                background-size cover
+                            .header-live-in-right
+                                width 250px
+                                height 250px
+                                float left
+                                .header-live-in-houtactive-title
+                                    width 230px
+                                    height 25px
+                                    float left
+                                .header-live-in-img
+                                    width 250px
+                                    height 225px
+                                    background-color green
+                    .store
+                        
+                    .conmic
+                        
+                        .header-left-conmic-in
+                            width 500px
+                            height 260px
+                            position absolute
+                            display block
+                            .header-conmic-in-left
+                                width 300px
+                                height 260px
+                                float left
+                                .conmic-in
+                                    width 120px
+                                    height 120px
+                                    float left
+                                    .one
+                                        background-color blue
+                                    .two
+                                        background-color blue
+                                    .three
+                                        background-color blue
+                                    .four
+                                        background-color blue
+                            .header-conmic-in-right
+                                width 200px
+                                height 260px
+                                float left
+                                .comic-in-title
+                                    width 200px
+                                    height 30px
+                                    margin 0 10px
+                                    float left
+                                .comic-in-content
+                                    width 200px
+                                    height 200px
+                                    .comic-in-content-title
+                                        width 200px
+                                        height 30px
+                                        margin 0 10px
+                    .contest
+
+                    .download
+
+                        .header-left-download-in
+                            width 200px
+                            height 200px
+                            display block
+                            position absolute
+            .header-right-ul
+                width 560px
+                height 40px
+                float left
+                ul
+                    li
+                        height 40px
+                        width auto
+                        line-height 40px
+                        margin 0 5px
+                        white-space nowrap
+                        float left
+                        position relative
+                        list-style none
+                        cursor pointer
+
+                    .login
+
+                        .login-false
+                            width 320px
+                            height 300px
+                            position absolute
+                            display block
+                            .login-false-logincan-title
+                                width 320px
+                                height 30px
+                                background-color blue
+                                float left
+                            .login-false-gif
+                                width 320px
+                                height 200px
+                                background-image url(../img/3.jpg)
+                                background-size cover
+                                float left
+                            .login-false-loginbtn
+                                width 320px
+                                height 40px
+                                float left
+                            .login-false-foot
+                                width 320px
+                                height 30px
+                                float left
+                        .login-true
+                            display none
+                    .member
+
+                    .message
+                        
+                        ul
+                            width 100px
+                            height 200px
+                            display block
+                            position absolute
+                            li
+                                width 100px
+                                height 40px
+                                line-height 40px
+                                list-style none
+                                cursor pointer
+                                float left
 </style>

@@ -5,9 +5,9 @@ import App from './App'
 import router from './router'
 import 'amfe-flexible'
 // import { Swipe, SwipeItem, Icon, Field, ActionSheet, Toast, Panel, Uploader } from 'vant'
-import 'vant/lib/index.css'
+// import 'vant/lib/index.css'
 import axios from 'axios'
-import util from './assets/js/util'
+import util from './utils/util'
 
 // Vue.use(Swipe).use(SwipeItem).use(Icon).use(Field).use(ActionSheet).use(Toast).use(Panel).use(Uploader)
 
