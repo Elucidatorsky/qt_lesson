@@ -297,38 +297,50 @@ export default {
                                 .game-in-gamepic_top
                                     width 240px
                                     height 128px
-                                    margin 15px 
+                                    margin 15px
+                                    border-radius 10%
                                     position relative
                                     float left
                                     img
                                         width 100%
                                         height 100%
+                                        border-radius 10%
                                     p
                                         width auto
                                         height 20px
                                         text-align left 
                                         line-height 20px
+                                        border-radius 10%
                                         width 100%
                                         bottom 0
                                         left 0
-                                        background-color skyblue
-                                        // background-color rgba (255,255,255,0.2)
+                                        // background rgb (255,255,255)
                                         position absolute
                                 .game-in-gamepic_bottom
                                     width 260px
                                     height 107px
                                     position relative
-                                    align-items center
                                     float left
                                     .game-in-gamepic
                                         width 60px
                                         height 100px
-                                        margin 0 0 7px 21px
+                                        margin 0 0 7px 15px
+                                        border-radius 10%
                                         position relative
                                         float left
                                         img
                                             width 60px
                                             height 60px
+                                        p
+                                            width auto
+                                            height 20px
+                                            text-align left 
+                                            line-height 20px
+                                            overflow hidden
+                                            width 100%
+                                            background-color skyblue
+                                    .two
+                                        margin 0 18px 0 27px
                             .header-game-in-right
                                 width 200px
                                 height 255px
@@ -509,4 +521,19 @@ export default {
                                 list-style none
                                 cursor pointer
                                 float left
+
+            .tougao
+                height 40px
+                width auto
+                float left
+                position relative
+                .tougao-in
+                    height 80px
+                    width 200px
+                    display block
+                    position absolute
+                    .tougao-content
+                        height 80px
+                        width 50px
+                        float left
 </style>
