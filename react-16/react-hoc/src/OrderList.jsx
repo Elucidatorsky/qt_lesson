@@ -2,7 +2,7 @@ import React, {
     Component
 } from 'react' ;
 import WithLogin from './WithLogin'
-@WithLogin // @ 装饰器
+//@WithLogin // @ 装饰器
 class OrderList extends Component {
     // state = {
     //     isLogin: false
