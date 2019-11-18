@@ -14,7 +14,7 @@
                                 </div>
                                 <div class="game-in-gamepic_bottom">
                                     <div class="game-in-gamepic one">
-                                        <img src="../img/header_game_in1.png" alt="">
+                                        <img src="../img/3.jpg" alt="">
                                         <p>命运-冠位指定</p>
                                     </div>
                                     <div class="game-in-gamepic two">
@@ -37,35 +37,48 @@
                             <div class="header-live-in-left">
                                 <div class="live-in-hotlive-title"><p>热门直播</p></div>
                                 <div class="live-in-person-wrap">
-                                    <div class="live-in-person one">
-                                        <div class="img"></div>
-                                        <div class="p"></div>
+                                    <div class="live-in-person-wrap-top">
+                                        <div class="live-in-person one">
+                                            <img src="url(../img/3.jpg)" alt="">
+                                            <div class="person-hover"><p>live</p></div>
+                                            <p>XXX</p>
+                                        </div>
+                                        <div class="live-in-person two">
+                                            <img src="url(../img/3.jpg)" alt="">
+                                            <div class="person-hover"><p>live</p></div>
+                                            <p>XXX</p>
+                                        </div>
+                                        <div class="live-in-person three">
+                                            <img src="url(../img/3.jpg)" alt="">
+                                            <div class="person-hover"><p>live</p></div>
+                                            <p>XXX</p>
+                                        </div>
                                     </div>
-                                    <div class="live-in-person two">
-                                        <div class="img"></div>
-                                        <div class="p"></div>
-                                    </div>
-                                    <div class="live-in-person three">
-                                        <div class="img"></div>
-                                        <div class="p"></div>
-                                    </div>
-                                    <div class="live-in-person four">
-                                        <div class="img"></div>
-                                        <div class="p"></div>
-                                    </div>
-                                    <div class="live-in-person five">
-                                        <div class="img"></div>
-                                        <div class="p"></div>
-                                    </div>
-                                    <div class="live-in-person six">
-                                        <div class="img"></div>
-                                        <div class="p"></div>
+                                    <div class="live-in-person-wrap-bottom">
+                                        <div class="live-in-person four">
+                                            <img src="url(../img/3.jpg)" alt="">
+                                            <div class="person-hover"><p>live</p></div>
+                                            <p>XXX</p>
+                                        </div>
+                                        <div class="live-in-person five">
+                                            <img src="url(../img/3.jpg)" alt="">
+                                            <div class="person-hover"><p>live</p></div>
+                                            <p>XXX</p>
+                                        </div>
+                                        <div class="live-in-person six">
+                                            <img src="url(../img/3.jpg)" alt="">
+                                            <div class="person-hover"><p>live</p></div>
+                                            <p>XXX</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="header-live-in-right">
                                 <div class="header-live-in-houtactive-title"><p>热门活动</p></div>
-                                <div class="header-live-in-img"><img src="" alt=""></div>
+                                <div class="header-live-in-img">
+                                    <img src="../img/header_game_in0.jpg" alt="">
+                                    <img src="../img/header_game_in0.jpg" alt="">
+                                </div>
                             </div>
                         </div>
                     </li>
@@ -74,20 +87,20 @@
                         <div class="header-left-comic-in">
                             <div class="header-comic-in-left">
                                 <div class="comic-in one">
-                                    <img src="" alt="">
-                                    <p></p>
+                                    <img src="../img/header_game_in0.jpg" alt="">
+                                    <p>XXX</p>
                                 </div>
                                 <div class="comic-in two">
-                                    <img src="" alt="">
-                                    <p></p>
+                                    <img src="../img/header_game_in0.jpg" alt="">
+                                    <p>XXX</p>
                                 </div>
                                 <div class="comic-in three">
-                                    <img src="" alt="">
-                                    <p></p>
+                                    <img src="../img/header_game_in0.jpg" alt="">
+                                    <p>XXX</p>
                                 </div>
                                 <div class="comic-in four">
-                                    <img src="" alt="">
-                                    <p></p>
+                                    <img src="../img/header_game_in0.jpg" alt="">
+                                    <p>XXX</p>
                                 </div>
                             </div>
                             <div class="header-comic-in-right">
@@ -288,7 +301,6 @@ export default {
                             position absolute
                             background-color yellow
                             display block
-                            z-index 10
                             .header-game-in-left
                                 width 270px
                                 height 255px
@@ -308,14 +320,15 @@ export default {
                                     p
                                         width auto
                                         height 20px
+                                        position absolute
                                         text-align left 
                                         line-height 20px
+                                        text-indent 10px
                                         border-radius 10%
                                         width 100%
                                         bottom 0
                                         left 0
-                                        // background rgb (255,255,255)
-                                        position absolute
+                                        background rgba(255,255,255,0.5)
                                 .game-in-gamepic_bottom
                                     width 260px
                                     height 107px
@@ -331,10 +344,13 @@ export default {
                                         img
                                             width 60px
                                             height 60px
+                                            float left
+                                            border-radius 10%
                                         p
                                             width auto
                                             height 20px
-                                            text-align left 
+                                            text-align left
+                                            float left
                                             line-height 20px
                                             overflow hidden
                                             width 100%
@@ -344,110 +360,142 @@ export default {
                             .header-game-in-right
                                 width 200px
                                 height 255px
+                                float left
                                 background-color blue
                     .live
 
                         .header-left-live-in
-                            width 500px
+                            width 540px
                             height 250px
                             position absolute
+                            background-color gray
                             display block
                             .header-live-in-left
-                                width 250px
-                                height 250px
+                                width 255px
+                                height 210px
+                                position relative
+                                background-color skyblue
+                                margin 20px
                                 float left
                                 .live-in-hotlive-title
                                     width 255px
                                     height 25px
+                                    position relative
+                                    line-height 10px
+                                    text-align left
                                     float left
                                 .live-in-person-wrap
-                                    width 255px
-                                    height 225px
-                                    float left
-                                    .live-in-person
-                                        width 64px
-                                        height 93px
-                                        background-color red
+                                    position relative
+                                    .live-in-person-wrap-top
+                                        margin-bottom 5px 
+                                    .live-in-person-wrap-bottom,.live-in-person-wrap-top
+                                        width 255px
+                                        height 90px
+                                        position relative
+                                        background-color blue
                                         float left
-                                        .one
+                                        .live-in-person
+                                            width 64px
+                                            height 90px
+                                            position relative
+                                            margin 0 10px
+                                            float left
+                                            background-color red
                                             img
+                                                width 64px
+                                                height 64px
+                                                float left
                                                 border-radius 50%
-                                                background-image url(../img/3.jpg)
-                                                background-size cover
-                                        .two
-                                            img
+                                            .person-hover
+                                                width 64px
+                                                height 64px
+                                                position absolute
                                                 border-radius 50%
-                                                background-image url(../img/3.jpg)
-                                                background-size cover
-                                        .three
-                                            img
-                                                border-radius 50%
-                                                background-image url(../img/3.jpg)
-                                                background-size cover
-                                        .four
-                                            img
-                                                border-radius 50%
-                                                background-image url(../img/3.jpg)
-                                                background-size cover
-                                        .five
-                                            img
-                                                border-radius 50%
-                                                background-image url(../img/3.jpg)
-                                                background-size cover
-                                        .six
-                                            img
-                                                border-radius 50%
-                                                background-image url(../img/3.jpg)
-                                                background-size cover
+                                                background rgba(255, 255, 255, 0.3)
+                                                p::before
+                                                    content "●"
+                                                    color red
+                                                    font-size 20px
+                                                p
+                                                    line-height 64px
+                                            p
+                                                width 64px
+                                                height 26px
+                                                float left
+                                                line-height 26px
                             .header-live-in-right
-                                width 250px
-                                height 250px
+                                width 190px
+                                height 210px
+                                position relative
+                                background-color skyblue
+                                margin 20px
                                 float left
                                 .header-live-in-houtactive-title
-                                    width 230px
+                                    width 190px
                                     height 25px
+                                    position relative
+                                    line-height 10px
+                                    text-align left
                                     float left
                                 .header-live-in-img
-                                    width 250px
-                                    height 225px
+                                    width 190px
+                                    height 185px
+                                    position relative
+                                    float left
                                     background-color green
+                                    img
+                                        width 190px
+                                        height 88px
+                                        margin-top 5px
+                                        float left
                     .store
                         
-                    .conmic
+                    .comic
                         
-                        .header-left-conmic-in
+                        .header-left-comic-in
                             width 500px
                             height 260px
                             position absolute
                             display block
-                            .header-conmic-in-left
-                                width 300px
-                                height 260px
+                            background-color yellow
+                            z-index 10
+                            .header-comic-in-left
+                                width 320px
+                                height 240px
+                                margin 10px
+                                background-color gray
+                                position relative
                                 float left
-                                .conmic-in
-                                    width 120px
-                                    height 120px
+                                .comic-in
+                                    width 140px
+                                    height 100px
+                                    margin 10px
+                                    position relative
                                     float left
-                                    .one
-                                        background-color blue
-                                    .two
-                                        background-color blue
-                                    .three
-                                        background-color blue
-                                    .four
-                                        background-color blue
-                            .header-conmic-in-right
-                                width 200px
+                                    img 
+                                        width 140px
+                                        height 84px
+                                        float left
+                                    p
+                                        width 140px
+                                        height 16px
+                                        line-height 30px
+                                        float left
+                            .header-comic-in-right
+                                width 160px
                                 height 260px
+                                position relative
                                 float left
                                 .comic-in-title
                                     width 200px
                                     height 30px
+                                    position relative
                                     margin 0 10px
                                     float left
                                 .comic-in-content
                                     width 200px
                                     height 200px
+                                    position relative
                                     .comic-in-content-title
                                         width 200px
                                         height 30px
